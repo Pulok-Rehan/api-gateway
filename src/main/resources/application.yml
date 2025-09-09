@@ -5,27 +5,15 @@ spring:
         - AddRequestHeader=X-Gateway-Tag, SpringCloudGateway
         - RemoveRequestHeader=Cookie
       routes:
-        - id: user-service
-          uri: http://localhost:8081
-          predicates:
-            - Path=/api/users/**
-          filters:
-            - RewritePath=/api/users/(?<segment>.*), /${segment}
-
-        - id: order-service
-          uri: http://localhost:8082
-          predicates:
-            - Path=/api/orders/**
-          filters:
-            - RewritePath=/api/orders/(?<segment>.*), /${segment}
-
         - id: common-service
-          uri: http://localhost:8086
+          uri: http://10.7.93.19:8086
+#          uri: http://localhost:8086
           predicates:
             - Path=/api/public/common/**
 
         - id: onboarding-service
           uri: http://localhost:9092
+#          uri: http://10.7.93.19:9092
           predicates:
             - Path=/onboarding/**
 

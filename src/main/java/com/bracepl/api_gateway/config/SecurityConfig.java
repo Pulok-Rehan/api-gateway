@@ -15,7 +15,6 @@ import org.springframework.security.web.server.SecurityWebFilterChain;
 import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.reactive.CorsWebFilter;
 import org.springframework.web.cors.reactive.UrlBasedCorsConfigurationSource;
-import org.springframework.web.filter.CorsFilter;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -42,7 +41,7 @@ public class SecurityConfig {
                 .addFilterBefore(channelHeaderFilter, SecurityWebFiltersOrder.AUTHENTICATION)
                 .authorizeExchange(ex -> ex
                         .pathMatchers(HttpMethod.OPTIONS).permitAll()
-                        .pathMatchers("/actuator/**", "/api/public/**", "/onboarding/api/public/**").permitAll()
+                        .pathMatchers("/actuator/**", "/api/public/**", "/onboarding/api/public/**", "/onboarding/**").permitAll()
                         .pathMatchers("/onboarding/settlement/**").hasRole("SETTLEMENT")
                         .pathMatchers("/onboarding/compliance/**").hasRole("COMPLIANCE")
                         .pathMatchers("/onboarding/rm/**").hasRole("RM")
